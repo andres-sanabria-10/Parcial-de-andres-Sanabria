@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 
   // Aquí se imprimirán los datos de products
   res.render("index.ejs", { title: "Gestión de Productos", data: products });
-  res.render("index.ejs", { data: datos });
+ 
 });
   
 
@@ -29,7 +29,7 @@ router.get("/", (req, res) => {
 
   // Aquí se imprimirán los datos de products
   res.render("ventas.ejs", { title: "Gestión de Productos", data: products });
-  res.render("ventas.ejs", { data: datos });
+
 });
 
 //direccionar a otra pagina
