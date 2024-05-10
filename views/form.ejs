@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include('./templates/header.ejs')%>
+    <body>
+        <div class="container-md" method="POST" action="/" style="background-color: 8AC0F3;">
+        <form>
+          <center><h1>Agregar producto</h1></center>
+
+            <div class="mb-1">
+              <label for="exampleInputEmail1" class="form-label">code</label>
+              <input type="text" class="form-control" id="code" aria-describedby="" name="code">
+            </div>
+
+            <div class="mb-1">
+              <label for="exampleInputEmail1" class="form-label">description</label>
+              <input type="text" class="form-control" id="description" aria-describedby="" name="description">
+              <div id="emailHelp" class="form-text">Ingresa una breve descripcion</div>
+            </div>
+
+
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">stock</label>
+              <input type="text" class="form-control" id="stock" name="stock">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">valor $</label>
+              <input type="text" class="form-control" id="value" name="value">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">stock min</label>
+                <input type="text" class="form-control" id="sotck-min" name="sotck-min">
+              </div>
+           
+            <button type="submit" id="Guardo-envio" class="btn btn-primary">Guardar</button>
+          </form>
+        </div>
+        <%-include('./templates/footer.ejs')%>
+        <script src="/script.js"></script>
+    </body>
+</html>

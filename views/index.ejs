@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include('./templates/header.ejs')%>
+    <body>
+        <div class="container">
+            <h1>Lista de Productos</h1>
+            <% if(data.length > 0){%>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Descripción</th>
+                  <th>Stock</th>
+                  <th>Valor</th>
+                  <th>Stock Mínimo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(let i = 0; i < data.length; i++){ %>
+                <tr>
+                  <td><%= data[i].code %></td>
+                  <td><%= data[i].description %></td>
+                  <td><%= data[i].stock %></td>
+                  <td><%= data[i].value %></td>
+                  <td><%= data[i]["sotck-min"] %></td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+            <%} else {%>
+            <h2>No hay productos disponibles</h2>
+            <%}%>
+            <a href="/form" class="btn-primary btn">Nuevos producto</a>
+            <br> <br>
+
+            <div class="container-sm"  style="background-color: aqua;"  >
+
+              <label for="text" class="label">id Para eliminar</label>
+              <input type="text" class="form-control" id="id_a" aria-describedby="" name="id">
+              <br>
+              <button class="btn btn-primary" id="eliminar">Eliminar</button>
+            </div>
+           
+        </div>
+        
+        <%-include('./templates/footer.ejs')%>
+       
+    </body>
+</html>
