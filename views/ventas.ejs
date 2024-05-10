@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include('./templates/header.ejs')%>
+    <body>
+        <div class="container">
+        <% if(data.length > 0){%>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">code</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Stock Mínimo</th> <!-- Nueva columna para ingresar un número -->
+              </tr>
+            </thead>
+            <tbody>
+                <% for(let i = 0; i < data.length; i++){ %>
+                <tr>
+                  <td><%= data[i].code %></td>
+                  <td><%= data[i].description %></td>
+                  <td><%= data[i].stock %></td>
+                  <td><%= data[i].value %></td>
+                  <td><%= data[i]["sotck-min"] %></td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+            <%} else {%>
+            <h2>No hay productos disponibles</h2>
+            <%}%>
+        </div>
+        </body>
+
+        <%-include('./templates/footer.ejs')%>
+<script src="/script.js"></script>
+</body>
+</html>

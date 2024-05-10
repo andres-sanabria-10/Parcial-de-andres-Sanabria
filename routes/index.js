@@ -20,6 +20,18 @@ router.get("/", (req, res) => {
   res.render("index.ejs", { data: datos });
 });
   
+
+router.get("/", (req, res) => {
+  // Acceder al contenido del archivo JSON
+  const productsObject = booksData.products; // Obtener el objeto "products"
+  const products = Object.values(productsObject); // Obtener los valores del objeto "products" (los objetos de productos individuales)
+  console.log(products); // Imprimirá un arreglo de objetos de productos
+
+  // Aquí se imprimirán los datos de products
+  res.render("ventas.ejs", { title: "Gestión de Productos", data: products });
+  res.render("ventas.ejs", { data: datos });
+});
+
 //direccionar a otra pagina
 
 router.get("/form", (req, res) => {
@@ -28,6 +40,9 @@ router.get("/form", (req, res) => {
 
 router.get("/index", (req, res) => {
   res.render("index.ejs", { title: "productos" });
+});
+router.get("/ventas", (req, res) => {
+  res.render("ventas.ejs", { title: "productos" });
 });
 
 
@@ -55,10 +70,7 @@ router.post("/", (req, res) => {
     };
 
     // Agregar el nuevo producto al objeto "products"
-    productsObject[code] = nuevoProducto;
-
-    // Actualizar el objeto "products" en el archivo JSON
-    booksData.products = productsObject;
+    booksData.products = { ...productsObject, [code]: nuevoProducto };
 
     // Escribir el nuevo objeto "products" en el archivo JSON
     fs.writeFileSync(filePath, JSON.stringify(booksData, null, 2));
@@ -68,8 +80,4 @@ router.post("/", (req, res) => {
 
   return res.status(200).json({ status: false, message: "Producto ya Registrado" });
 });
-
-
-
-
 module.exports = router;
